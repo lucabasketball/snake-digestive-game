@@ -107,12 +107,15 @@ function startTimer() {
 function gameLoop() {
     if (!gameRunning) return;
 
-    update();
+    // Only update if the snake is actually moving
+    if (dx !== 0 || dy !== 0) {
+        update();
+    }
+
     draw();
 
     setTimeout(gameLoop, 100);
 }
-
 function update() {
     dx = nextDx;
     dy = nextDy;
